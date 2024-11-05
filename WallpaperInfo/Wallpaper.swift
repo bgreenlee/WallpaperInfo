@@ -86,6 +86,7 @@ class Wallpaper: ObservableObject {
                 .lastPathComponent
                 .split(separator: ".")
                 .first!
+            // look up the wallpaper asset by ID
             return Wallpaper.shared.getAsset(id: String(id))
         }
         return nil

@@ -12,7 +12,7 @@ unlike AppleTV.
 Requirements: MacOS Sonoma 14.0 or later
 
 [Download the current release](https://github.com/bgreenlee/WallpaperInfo/releases/latest/download/WallpaperInfo.zip)
-and just run it (you might want to stick it in your Applications folder). It will add a new icon (![icon](assets/icon-sm.png)) to the menu bar at the top of your screen. Clicking on it will show a preview image and name of the current aerial wallpaper.
+and just run it (you might want to stick it in your Applications folder). It will add a new icon (<img src="assets/icon-sm.png" alt="icon" style="margin-bottom:-0.25em">) to the menu bar at the top of your screen. Clicking on it will show a preview image and name of the current aerial wallpaper.
 
 Note that this app won't do much for you if you're not using the aerial wallpapers.
 
