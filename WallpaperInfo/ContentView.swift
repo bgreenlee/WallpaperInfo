@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var wallpaper = Wallpaper.shared
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            AsyncImage(url: URL(string: wallpaper.currentWallpaper?.previewImage ?? "")) { image in
+                image
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: 214, height: 130)
+            Text(wallpaper.currentWallpaper?.description ?? "No aerial wallpaper set")
         }
         .padding()
     }

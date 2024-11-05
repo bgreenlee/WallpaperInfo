@@ -10,8 +10,14 @@ import SwiftUI
 @main
 struct WallpaperInfoApp: App {
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra {
             ContentView()
+                .onAppear {
+                    Wallpaper.shared.updateCurrentWallpaper()
+                }
+        } label: {
+            Image(systemName: "info.bubble")
         }
+        .menuBarExtraStyle(.window)
     }
 }
