@@ -53,7 +53,7 @@ struct WallpaperAssets: Decodable {
 }
 
 class Wallpaper: ObservableObject {
-    var assets: [WallpaperAsset] = [] // TODO: make this a dict
+    var assets: [String:WallpaperAsset] = [:]
 
     @Published var currentWallpaper: WallpaperAsset? = nil
 
@@ -64,14 +64,12 @@ class Wallpaper: ObservableObject {
         let decoder = JSONDecoder()
         do {
             let res = try decoder.decode(WallpaperAssets.self, from: json.data(using: .utf8)!)
-            self.assets = res.assets
+            for asset in res.assets {
+                assets[asset.id] = asset
+            }
         } catch {
             print(error)
         }
-    }
-
-    func getAsset(id: String) -> WallpaperAsset? {
-        assets.first(where: { $0.id == id })
     }
 
     func getCurrentWallpaper() -> WallpaperAsset? {
@@ -87,7 +85,7 @@ class Wallpaper: ObservableObject {
                 .split(separator: ".")
                 .first!
             // look up the wallpaper asset by ID
-            return Wallpaper.shared.getAsset(id: String(id))
+            return Wallpaper.shared.assets[String(id)]
         }
         return nil
     }
