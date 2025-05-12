@@ -56,6 +56,7 @@ class Wallpaper: ObservableObject {
     var assets: [String:WallpaperAsset] = [:]
 
     @Published var currentWallpaper: WallpaperAsset? = nil
+    @Published var isLoading: Bool = true
 
     static let shared = Wallpaper()
 
@@ -91,6 +92,8 @@ class Wallpaper: ObservableObject {
     }
 
     func updateCurrentWallpaper() {
+        isLoading = true
         currentWallpaper = getCurrentWallpaper()
+        isLoading = false
     }
 }

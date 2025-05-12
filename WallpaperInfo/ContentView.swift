@@ -12,13 +12,9 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: wallpaper.currentWallpaper?.previewImage ?? "")) { image in
-                image
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: 214, height: 130)
-            Text(wallpaper.currentWallpaper?.description ?? "No aerial wallpaper set")
+            ImageView()
+                .frame(width: 214, height: 130)
+            Text(wallpaper.isLoading ? "" : wallpaper.currentWallpaper?.description ?? "No aerial wallpaper set")
         }
         .padding()
     }
