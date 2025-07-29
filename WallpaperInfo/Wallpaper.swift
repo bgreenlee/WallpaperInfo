@@ -75,7 +75,7 @@ class Wallpaper: ObservableObject {
 
     func getCurrentWallpaper() -> WallpaperAsset? {
         // get the PID of the process that updates the aerial wallpapers
-        let pid = shell("/usr/bin/pgrep", "WallpaperVideoExtension").trimmingCharacters(in: .whitespacesAndNewlines)
+        let pid = shell("/usr/bin/pgrep", "WallpaperVideoExtension|WallpaperAerialsExtension").trimmingCharacters(in: .whitespacesAndNewlines)
         // look for a .mov file in the files that process has open
         let openFiles = shell("/usr/sbin/lsof", "-Fn", "-p", pid)
         // find the first file ending in .mov and extract the ID from it
